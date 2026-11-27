@@ -22,6 +22,7 @@ Entity Framework Core y SQL Server.
 | Datos/Entidades | Clases del dominio |
 | Migrations | Migraciones de EF Core |
 | BaseDatos | Script SQL |
+| Evidencias | Capturas de pantalla |
 
 ## Instalación
 
@@ -33,3 +34,22 @@ Entity Framework Core y SQL Server.
 ## Datos de ejemplo
 
 El script crea categorías, roles, productos y usuarios de prueba.
+
+## Evidencias
+
+### Menú principal
+![Menú](Evidencias/01-menu.png)
+
+### Roles
+![Lista de roles](Evidencias/02-roles-lista.png)
+![Validación](Evidencias/03-rol-validacion.png)
+![Rol creado](Evidencias/04-rol-creado.png)
+![Rol editado](Evidencias/05-rol-editado.png)
+
+### Usuarios
+![Lista de usuarios](Evidencias/06-usuarios-lista.png)
+![Usuario creado](Evidencias/07-usuario-creado.png)
+![Usuario editado](Evidencias/08-usuario-editado.png)
+
+### Base de datos
+![Consulta SQL](Evidencias/09-sql.png)
