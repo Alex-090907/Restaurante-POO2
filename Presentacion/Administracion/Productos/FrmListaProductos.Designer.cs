@@ -18,10 +18,11 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            lstListaproductos = new ListBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            lstProductos = new ListBox();
+            btnNuevo = new Button();
+            btnEditar = new Button();
+            btnEliminar = new Button();
+            btnSalir = new Button();
             SuspendLayout();
             // 
             // label1
@@ -33,63 +34,75 @@
             label1.TabIndex = 0;
             label1.Text = "Lista de Productos";
             // 
-            // lstListaproductos
+            // lstProductos
             // 
-            lstListaproductos.Font = new Font("Segoe UI", 14F);
-            lstListaproductos.FormattingEnabled = true;
-            lstListaproductos.ItemHeight = 25;
-            lstListaproductos.Location = new Point(30, 85);
-            lstListaproductos.Name = "lstListaproductos";
-            lstListaproductos.Size = new Size(460, 254);
-            lstListaproductos.TabIndex = 1;
+            lstProductos.Font = new Font("Segoe UI", 14F);
+            lstProductos.FormattingEnabled = true;
+            lstProductos.ItemHeight = 25;
+            lstProductos.Location = new Point(30, 85);
+            lstProductos.Name = "lstProductos";
+            lstProductos.Size = new Size(620, 254);
+            lstProductos.TabIndex = 1;
             // 
-            // button1
+            // btnNuevo
             // 
-            button1.Font = new Font("Segoe UI", 14F);
-            button1.Location = new Point(30, 365);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 50);
-            button1.TabIndex = 2;
-            button1.Text = "&Nuevo";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnNuevo.Font = new Font("Segoe UI", 14F);
+            btnNuevo.Location = new Point(30, 365);
+            btnNuevo.Name = "btnNuevo";
+            btnNuevo.Size = new Size(140, 50);
+            btnNuevo.TabIndex = 2;
+            btnNuevo.Text = "&Nuevo";
+            btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
-            // button2
+            // btnEditar
             // 
-            button2.Font = new Font("Segoe UI", 14F);
-            button2.Location = new Point(190, 365);
-            button2.Name = "button2";
-            button2.Size = new Size(140, 50);
-            button2.TabIndex = 3;
-            button2.Text = "&Editar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnEditar.Font = new Font("Segoe UI", 14F);
+            btnEditar.Location = new Point(190, 365);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(140, 50);
+            btnEditar.TabIndex = 3;
+            btnEditar.Text = "&Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
-            // button3
+            // btnEliminar
             // 
-            button3.Font = new Font("Segoe UI", 14F);
-            button3.Location = new Point(350, 365);
-            button3.Name = "button3";
-            button3.Size = new Size(140, 50);
-            button3.TabIndex = 4;
-            button3.Text = "E&liminar";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnEliminar.Font = new Font("Segoe UI", 14F);
+            btnEliminar.Location = new Point(350, 365);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(140, 50);
+            btnEliminar.TabIndex = 4;
+            btnEliminar.Text = "E&liminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Segoe UI", 14F);
+            btnSalir.Location = new Point(510, 365);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(140, 50);
+            btnSalir.TabIndex = 5;
+            btnSalir.Text = "&Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // FrmListaProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(520, 445);
+            CancelButton = btnSalir;
+            ClientSize = new Size(680, 445);
             Controls.Add(label1);
-            Controls.Add(lstListaproductos);
-            Controls.Add(button1);
-            Controls.Add(button2);
-            Controls.Add(button3);
+            Controls.Add(lstProductos);
+            Controls.Add(btnNuevo);
+            Controls.Add(btnEditar);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnSalir);
             Name = "FrmListaProductos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lista de Productos";
-            Activated += FrmListaProductos_Activated;
             Load += FrmListaProductos_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -98,9 +111,10 @@
         #endregion
 
         private Label label1;
-        private ListBox lstListaproductos;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private ListBox lstProductos;
+        private Button btnNuevo;
+        private Button btnEditar;
+        private Button btnEliminar;
+        private Button btnSalir;
     }
 }

@@ -1,30 +1,23 @@
-﻿using Restaurante.Datos;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurante.Datos;
 using Restaurante.Datos.Entidades;
 
 namespace Restaurante.Negocio
 {
+    // Acceso a datos de Categorías
     public class CategoriasServicio
     {
-        private readonly RestauranteDbContext _dbContext = new RestauranteDbContext();
+        private readonly Func<RestauranteDbContext> _crearContexto;
 
-        // Devuelve todas las categorías
-        public List<Categorias> todos()
+        public CategoriasServicio(Func<RestauranteDbContext> crearContexto)
         {
-            return _dbContext.Categorias.ToList();
+            _crearContexto = crearContexto;
         }
 
-        public bool insertar(Categorias categorias)
+        public List<Categorias> Todos()
         {
-            try
-            {
-                _dbContext.Categorias.Add(categorias);
-                _dbContext.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            using var db = _crearContexto();
+            return db.Categorias.AsNoTracking().OrderBy(c => c.detalle).ToList();
         }
     }
 }

@@ -11,6 +11,7 @@ Entity Framework Core y SQL Server.
 - Validación de campos y mensajes de éxito o error
 - Contraseñas guardadas con hash PBKDF2
 - Consultas con LINQ, sin SQL concatenado
+- Inyección de dependencias por constructor (configurada en Program.cs)
 
 ## Estructura en capas
 

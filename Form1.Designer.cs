@@ -17,55 +17,55 @@
 
         private void InitializeComponent()
         {
-            label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            lblTitulo = new Label();
+            btnProductos = new Button();
+            btnRoles = new Button();
+            btnUsuarios = new Button();
             btnSalir = new Button();
             SuspendLayout();
             // 
-            // label1
+            // lblTitulo
             // 
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.Location = new Point(30, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(360, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Restaurante";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitulo.Location = new Point(30, 25);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(360, 45);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "Restaurante";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnProductos
             // 
-            button1.Font = new Font("Segoe UI", 14F);
-            button1.Location = new Point(70, 95);
-            button1.Name = "button1";
-            button1.Size = new Size(280, 55);
-            button1.TabIndex = 1;
-            button1.Text = "&Productos";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnProductos.Font = new Font("Segoe UI", 14F);
+            btnProductos.Location = new Point(70, 95);
+            btnProductos.Name = "btnProductos";
+            btnProductos.Size = new Size(280, 55);
+            btnProductos.TabIndex = 1;
+            btnProductos.Text = "&Productos";
+            btnProductos.UseVisualStyleBackColor = true;
+            btnProductos.Click += btnProductos_Click;
             // 
-            // button2
+            // btnRoles
             // 
-            button2.Font = new Font("Segoe UI", 14F);
-            button2.Location = new Point(70, 170);
-            button2.Name = "button2";
-            button2.Size = new Size(280, 55);
-            button2.TabIndex = 2;
-            button2.Text = "&Roles";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnRoles.Font = new Font("Segoe UI", 14F);
+            btnRoles.Location = new Point(70, 170);
+            btnRoles.Name = "btnRoles";
+            btnRoles.Size = new Size(280, 55);
+            btnRoles.TabIndex = 2;
+            btnRoles.Text = "&Roles";
+            btnRoles.UseVisualStyleBackColor = true;
+            btnRoles.Click += btnRoles_Click;
             // 
-            // button3
+            // btnUsuarios
             // 
-            button3.Font = new Font("Segoe UI", 14F);
-            button3.Location = new Point(70, 245);
-            button3.Name = "button3";
-            button3.Size = new Size(280, 55);
-            button3.TabIndex = 3;
-            button3.Text = "&Usuarios";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnUsuarios.Font = new Font("Segoe UI", 14F);
+            btnUsuarios.Location = new Point(70, 245);
+            btnUsuarios.Name = "btnUsuarios";
+            btnUsuarios.Size = new Size(280, 55);
+            btnUsuarios.TabIndex = 3;
+            btnUsuarios.Text = "&Usuarios";
+            btnUsuarios.UseVisualStyleBackColor = true;
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnSalir
             // 
@@ -84,10 +84,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnSalir;
             ClientSize = new Size(420, 410);
-            Controls.Add(label1);
-            Controls.Add(button1);
-            Controls.Add(button2);
-            Controls.Add(button3);
+            Controls.Add(lblTitulo);
+            Controls.Add(btnProductos);
+            Controls.Add(btnRoles);
+            Controls.Add(btnUsuarios);
             Controls.Add(btnSalir);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
@@ -97,10 +97,10 @@
 
         #endregion
 
-        private Label label1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Label lblTitulo;
+        private Button btnProductos;
+        private Button btnRoles;
+        private Button btnUsuarios;
         private Button btnSalir;
     }
 }

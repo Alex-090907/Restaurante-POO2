@@ -11,9 +11,17 @@ namespace Restaurante.Negocio
 
     public class UsuariosServicio
     {
+        private readonly Func<RestauranteDbContext> _crearContexto;
+
+        // Recibe la forma de crear el contexto (inyección de dependencias)
+        public UsuariosServicio(Func<RestauranteDbContext> crearContexto)
+        {
+            _crearContexto = crearContexto;
+        }
+
         public List<UsuarioVista> Todos()
         {
-            using var db = new RestauranteDbContext();
+            using var db = _crearContexto();
             return db.Usuarios.AsNoTracking()
                 .OrderBy(u => u.NombreUsuario)
                 .Select(u => new UsuarioVista(u.Id, u.NombreUsuario,
@@ -23,13 +31,13 @@ namespace Restaurante.Negocio
 
         public Usuario? Uno(int id)
         {
-            using var db = new RestauranteDbContext();
+            using var db = _crearContexto();
             return db.Usuarios.AsNoTracking().FirstOrDefault(u => u.Id == id);
         }
 
         public bool ExisteNombreUsuario(string nombreUsuario, int idActual = 0)
         {
-            using var db = new RestauranteDbContext();
+            using var db = _crearContexto();
             return db.Usuarios.Any(u => u.NombreUsuario == nombreUsuario
                 && u.Id != idActual);
         }
@@ -38,7 +46,7 @@ namespace Restaurante.Negocio
         {
             try
             {
-                using var db = new RestauranteDbContext();
+                using var db = _crearContexto();
                 usuario.PasswordHash = GenerarHash(password);
                 db.Usuarios.Add(usuario);
                 return db.SaveChanges() > 0;
@@ -54,7 +62,7 @@ namespace Restaurante.Negocio
         {
             try
             {
-                using var db = new RestauranteDbContext();
+                using var db = _crearContexto();
                 var existente = db.Usuarios.Find(usuario.Id);
                 if (existente == null) return false;
 

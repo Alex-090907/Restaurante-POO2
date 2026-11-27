@@ -4,28 +4,52 @@ using Restaurante.Datos.Entidades;
 
 namespace Restaurante.Negocio
 {
+    // Acceso a datos de Productos
     public class ProductosService
     {
-        private readonly RestauranteDbContext _dbContext = new RestauranteDbContext();
+        private readonly Func<RestauranteDbContext> _crearContexto;
 
-        // Lista ordenada por nombre, siempre leída de la base
-        public List<Producto> todos()
+        public ProductosService(Func<RestauranteDbContext> crearContexto)
         {
-            return _dbContext.Productos.AsNoTracking().OrderBy(p => p.Nombre).ToList();
+            _crearContexto = crearContexto;
         }
 
-        // Busca un producto por su Id
-        public Producto uno(int id)
+        public List<Producto> Todos()
         {
-            return _dbContext.Productos.FirstOrDefault(p => p.Id == id);
+            using var db = _crearContexto();
+            return db.Productos.AsNoTracking().OrderBy(p => p.Nombre).ToList();
         }
 
-        public bool insertar(Producto producto)
+        public Producto? Uno(int id)
+        {
+            using var db = _crearContexto();
+            return db.Productos.AsNoTracking().FirstOrDefault(p => p.Id == id);
+        }
+
+        public bool Insertar(Producto producto)
         {
             try
             {
-                _dbContext.Productos.Add(producto);
-                _dbContext.SaveChanges();
+                using var db = _crearContexto();
+                db.Productos.Add(producto);
+                return db.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Editar(Producto producto)
+        {
+            try
+            {
+                using var db = _crearContexto();
+                var existente = db.Productos.Find(producto.Id);
+                if (existente == null) return false;
+
+                db.Entry(existente).CurrentValues.SetValues(producto);
+                db.SaveChanges();
                 return true;
             }
             catch (Exception)
@@ -34,32 +58,16 @@ namespace Restaurante.Negocio
             }
         }
 
-        public async Task<bool> editar(Producto producto)
+        public bool Eliminar(int id)
         {
             try
             {
-                var productoExistente = await _dbContext.Productos
-                    .FirstOrDefaultAsync(p => p.Id == producto.Id);
+                using var db = _crearContexto();
+                var existente = db.Productos.Find(id);
+                if (existente == null) return false;
 
-                // Copia los nuevos valores sobre el registro guardado
-                _dbContext.Entry(productoExistente).CurrentValues.SetValues(producto);
-                await _dbContext.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool eliminar(int id)
-        {
-            try
-            {
-                var pro = _dbContext.Productos.FirstOrDefault(p => p.Id == id);
-                _dbContext.Productos.Remove(pro);
-                _dbContext.SaveChanges();
-                return true;
+                db.Productos.Remove(existente);
+                return db.SaveChanges() > 0;
             }
             catch (Exception)
             {
